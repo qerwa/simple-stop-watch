@@ -15,9 +15,9 @@ class ViewController: UIViewController {
       override func viewDidLoad() {
             super.viewDidLoad()
             // Do any additional setup after loading the view, typically from a nib.
-            myTimer = Timer.scheduledTimer(withTimeInterval: 1/100, repeats: true, block: { (timer) in
-                  self.updateTime()
-            })
+//            myTimer = Timer.scheduledTimer(withTimeInterval: 1/100, repeats: true, block: { (timer) in
+//                  self.updateTime()
+//            })
       }
 
       func updateTime(){
@@ -27,5 +27,18 @@ class ViewController: UIViewController {
             let msec = count - (min * 60 * 100) - (sec * 100)
             timeLabel.text = String(format: "%02d:%02d:%02d", min, sec, msec)
 }
+      @IBAction func St(_ sender: Any) {
+            myTimer = Timer.scheduledTimer(withTimeInterval: 1/100, repeats: true, block: { (timer) in
+                  self.updateTime()})
+            
+      }
 
+      @IBAction func Sp(_ sender: Any) {
+            myTimer.invalidate()
+      }
+      
+      @IBAction func RE(_ sender: Any) {
+            count=0
+            timeLabel.text="00:00:00"
+      }
 }
